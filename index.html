@@ -1,0 +1,64 @@
+#include <stdio.h>
+
+// Function to perform Bubble Sort
+void bubble_sort(int arr[], int n) {
+    int i, j, temp;
+    
+    // Outer loop that goes through the entire array
+    for (i = 0; i < n-1; i++) {
+        // Flag to check if a swap happened in this pass
+        int swapped = 0;
+
+        // Inner loop for comparing adjacent elements
+        for (j = 0; j < n-i-1; j++) {
+            // Compare adjacent elements
+            if (arr[j] > arr[j+1]) {
+                // Swap the elements if they are in the wrong order
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+                
+                // Set swapped flag to 1 to indicate a swap occurred
+                swapped = 1;
+            }
+        }
+
+        // If no elements were swapped, the array is already sorted
+        if (!swapped) {
+            break;
+        }
+
+        // Print the array after each pass of the outer loop to observe the sorting process
+        printf("Array after pass %d: ", i+1);
+        for (int k = 0; k < n; k++) {
+            printf("%d ", arr[k]);
+        }
+        printf("\n");
+    }
+}
+
+// Function to print the array
+void print_array(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    // Array with 10 elements
+    int arr[10] = {64, 34, 25, 12, 22, 11, 90, 56, 78, 51};
+
+    int n = 10; // Size of the array
+
+    printf("Original array:\n");
+    print_array(arr, n);
+    
+    // Perform Bubble Sort
+    bubble_sort(arr, n);
+
+    printf("\nSorted array:\n");
+    print_array(arr, n);
+    
+    return 0;
+}
